@@ -203,6 +203,7 @@ public class AddCondomino extends javax.swing.JFrame {
                         "Erro",
                         0);
         }
+        this.dispose();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     public void limpar(){

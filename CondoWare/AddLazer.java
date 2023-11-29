@@ -171,6 +171,7 @@ public class AddLazer extends javax.swing.JFrame {
                     "Adicionar área de lazer",
                     0);
         }
+        this.dispose();
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     public void limpar(){

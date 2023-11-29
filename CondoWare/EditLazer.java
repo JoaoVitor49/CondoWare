@@ -183,6 +183,7 @@ public class EditLazer extends javax.swing.JFrame {
         receberLazer(cxTipo.getText(), Integer.parseInt(cxCapacidade.getText()), Float.parseFloat(cxAluguel.getText()));
         Conexao.getConexao().atualizaBancoAreaDeLazer();
         mostrarDados();
+        this.dispose();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     public void receberLazer(String tp, int cap, float valor){

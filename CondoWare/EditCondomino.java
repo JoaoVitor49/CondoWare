@@ -211,6 +211,7 @@ public class EditCondomino extends javax.swing.JFrame {
         receberApNome(Integer.parseInt(cxAp.getText()), cxNome.getText());
         Conexao.getConexao().atualizaBancoCondomino();
         mostrarDados();
+        this.dispose();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     public void receberApNome(int numAp, String name){

@@ -219,6 +219,7 @@ public class EditFuncionario extends javax.swing.JFrame {
         receberNomeSal(cxNome.getText(), Float.parseFloat(cxSalario.getText()));
         Conexao.getConexao().atualizaBancoFuncionario();
         mostrarDados();
+        this.dispose();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     public void receberNomeSal(String name, float sal){
