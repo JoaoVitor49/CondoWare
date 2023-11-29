@@ -510,6 +510,42 @@ public class Conexao {
     
     //------------------------------------------- Áreas de lazer
     
+    public int addLazer(int id, String tipo, int capacidade, Float aluguel) {
+        String sql = "INSERT INTO Area_Lazer VALUES (" + id + ", '" + tipo + "', " + capacidade + ", " + aluguel + ")";
+        try {
+            Statement stm = con.createStatement();
+            stm.executeUpdate(sql);
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int editAreaLazer(int id, String tipo, int capacidade, Float aluguel) {
+        String sql = "UPDATE Area_Lazer SET tipo = '" + tipo + "', capacidade = " + capacidade + ", aluguel = " + aluguel + " WHERE id = " + id;
+        try {
+            Statement stm = con.createStatement();
+            stm.executeUpdate(sql);
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int apagarAreaLazer(int id) {
+        String sql = "DELETE FROM Area_Lazer WHERE id = " + id;
+        try {
+            Statement stm = con.createStatement();
+            stm.executeUpdate(sql);
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
     public ResultSet atualizaBancoAreaDeLazer() {
         Bancos.getBancos().getBdAreaDeLazer().clear();
         try {
