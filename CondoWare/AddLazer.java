@@ -4,6 +4,8 @@
  */
 package condoware.CondoWare;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaop
@@ -58,6 +60,11 @@ public class AddLazer extends javax.swing.JFrame {
         rotAluguel.setText("Aluguel:");
 
         btAdicionar.setText("Adicionar");
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
+            }
+        });
 
         btVoltar.setText("Voltar");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +151,27 @@ public class AddLazer extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limpar();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        int id = Integer.parseInt(cxId.getText());
+        String tipo = cxTipo.getText();
+        int capacidade = Integer.parseInt(cxCapacidade.getText());
+        Float aluguel = Float.parseFloat(cxAluguel.getText());
+        int res = Conexao.getConexao().addLazer(id, tipo, capacidade, aluguel);
+        if (res == 1) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Área adicionada com sucesso!",
+                    "Adicionar área de lazer",
+                    1);
+        } else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao adicionar área de laer",
+                    "Adicionar área de lazer",
+                    0);
+        }
+    }//GEN-LAST:event_btAdicionarActionPerformed
 
     public void limpar(){
         cxId.setText("");

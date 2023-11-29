@@ -4,6 +4,8 @@
  */
 package condoware.CondoWare;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaop
@@ -62,6 +64,11 @@ public class ApagarLazer extends javax.swing.JFrame {
         rotAluguel.setText("Aluguel:");
 
         btSalvar.setText("Deletar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         rotId.setText("Id:");
 
@@ -147,6 +154,25 @@ public class ApagarLazer extends javax.swing.JFrame {
         travarCx();
         mostrarDados();
     }//GEN-LAST:event_formWindowActivated
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        int id = Integer.parseInt(cxId.getText());
+        int res = Conexao.getConexao().apagarAreaLazer(id);
+        if(res == 1){
+            JOptionPane.showMessageDialog(
+                        null,
+                        "Área apagada com sucesso!",
+                        "Apagar área de lazer",
+                        1);
+        }
+        else {
+            JOptionPane.showMessageDialog(
+                        null,
+                        "Erro ao apagar área de laer",
+                        "Apagar área de lazer",
+                        0);
+        }
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     public void receberLazer(String tp, int cap, float valor){
         tipo = tp;
