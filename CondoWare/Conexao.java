@@ -607,6 +607,18 @@ public class Conexao {
         }
     }
     
+    public int registrarDataAlugada(int id, String data, String cpfLocador) {
+        String sql = "INSERT INTO Areas_Alug VALUES ("+id+", '"+data+"', "+cpfLocador+")";
+        try{
+        Statement stm = con.createStatement();
+        stm.executeUpdate(sql);
+        return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
     public int verificaDataDisp(Date data, int id) {
         atualizaBancoAreasAlugadas();
         for(int i = 0; i < Bancos.getBancos().getBdAreasAlugadas().size(); i++){

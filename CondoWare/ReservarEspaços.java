@@ -135,10 +135,24 @@ public class ReservarEspaços extends javax.swing.JFrame {
     private void btReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservarActionPerformed
         int row = tabAreasDeLazer.getSelectedRow();
         int id = (int) tabAreasDeLazer.getValueAt(row,0);
+        int res = 0;
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
         try{
             Date data = formato.parse(dat);
-            Conexao.getConexao().verificaDataDisp(data, id);
+            res = Conexao.getConexao().verificaDataDisp(data, id);
+            if(res == 1){
+                res = Conexao.getConexao().registrarDataAlugada(id, dat, CondoWare.getCpf());
+                if(res == 1) {
+                    System.out.println("alguel registrado");
+                }
+                else {
+                    System.out.println("erro ao alugar");
+                }
+            }
+            else{
+                System.out.println("data alugada");
+            }
+            
         }
         catch (Exception e) {
             e.printStackTrace();
