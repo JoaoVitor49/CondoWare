@@ -109,7 +109,7 @@ public class HistoricoVisitas extends javax.swing.JFrame {
         mostrarLinha();
     }//GEN-LAST:event_tabHistoricoMouseClicked
 
-     public void mostrarLinha(){
+    public void mostrarLinha(){
         int row = tabHistorico.getSelectedRow();
         String nome = (String) tabHistorico.getValueAt(row, 0);
         int ap = (int) tabHistorico.getValueAt(row,1);

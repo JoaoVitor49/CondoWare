@@ -1,5 +1,7 @@
 package CondoWare2;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EmpresasParceiras extends javax.swing.JFrame {
@@ -42,15 +44,20 @@ public class EmpresasParceiras extends javax.swing.JFrame {
 
         tabEmpresas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome da Empresa", "Contato", "Responsável"
+                "Nome da Empresa", "Contato", "Responsável", "Serviço"
             }
         ));
+        tabEmpresas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabEmpresasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabEmpresas);
 
         btVoltar.setText("Voltar");
@@ -92,6 +99,10 @@ public class EmpresasParceiras extends javax.swing.JFrame {
         listarAll();
     }//GEN-LAST:event_formWindowActivated
 
+    private void tabEmpresasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEmpresasMouseClicked
+        mostrarLinha();
+    }//GEN-LAST:event_tabEmpresasMouseClicked
+
     public void listarAll() {
         Bancos.getBancos().getBdEmpresas().clear();
         Conexao.getConexao().atualizaBancoEmpresa();
@@ -101,9 +112,26 @@ public class EmpresasParceiras extends javax.swing.JFrame {
         for(Empresas e: Bancos.getBancos().getBdEmpresas()) {
             tabModel.insertRow(posLin, new Object[]{e.getNome(),
                                                        e.getContato(),
-                                                       e.getResponsavel()});
+                                                       e.getResponsavel(),
+                                                       e.getServico()});
             posLin++;
         }
+    }
+    
+    public void mostrarLinha(){
+        int row = tabEmpresas.getSelectedRow();
+        String nome = (String) tabEmpresas.getValueAt(row, 0);
+        String contato = (String) tabEmpresas.getValueAt(row,1);
+        String responsavel = (String) tabEmpresas.getValueAt(row,2);
+        String servico = (String) tabEmpresas.getValueAt(row,3);
+        JOptionPane.showMessageDialog(
+                        null,
+                        "Nome: " +nome+
+                        "\nContato: " +contato+
+                        "\nResponsável: " +responsavel+
+                        "\nServiço: "+servico,
+                        "Dados da Empresa",
+                        1);
     }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
