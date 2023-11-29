@@ -493,10 +493,12 @@ public class Conexao {
                     String nome = rs.getString("nome");
                     String contato = rs.getString("contato");
                     String responsavel = rs.getString("responsavel");
+                    String servico = rs.getString("serv_atr");
 
                     empresa.setNome(nome);
                     empresa.setContato(contato);
                     empresa.setResponsavel(responsavel);
+                    empresa.setServico(servico);
                     Bancos.getBancos().getBdEmpresas().add(empresa);
                 }
             } catch (SQLException e) {

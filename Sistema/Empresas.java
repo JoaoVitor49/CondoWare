@@ -4,6 +4,7 @@ public class Empresas {
     private String nome;
     private String contato;
     private String responsavel;
+    private String servico;
 
     public String getNome() {
         return nome;
@@ -27,5 +28,13 @@ public class Empresas {
 
     public void setResponsavel(String responsavel) {
         this.responsavel = responsavel;
+    }
+
+    public String getServico() {
+        return servico;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
     }
 }
