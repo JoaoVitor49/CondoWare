@@ -1,6 +1,10 @@
-package condoware.CondoWare;
+package condoware.CondoWare.CondoWare;
 
 
+import condoware.CondoWare.Conexao;
+import condoware.CondoWare.TelaDoCondomino;
+import condoware.CondoWare.TelaDoFuncionario;
+import condoware.CondoWare.TelaDoSindico;
 import javax.swing.JOptionPane;
 
 public class CondoWare extends javax.swing.JFrame {

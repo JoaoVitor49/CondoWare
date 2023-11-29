@@ -1,5 +1,6 @@
 package condoware.CondoWare;
 
+import condoware.CondoWare.CondoWare.CondoWare;
 import javax.swing.JOptionPane;
 
 public class DadosPessoaisFuncionarios extends javax.swing.JFrame {
@@ -208,6 +209,7 @@ public class DadosPessoaisFuncionarios extends javax.swing.JFrame {
         Conexao.getConexao().atualizaBancoFuncionario();
         setarCaixasFunc();
         desativarCaixas();
+        this.dispose();
     }//GEN-LAST:event_btSalvarMudançasActionPerformed
     
     public void ativarEdicao(){

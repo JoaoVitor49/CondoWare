@@ -4,6 +4,7 @@
  */
 package condoware.CondoWare;
 
+import condoware.CondoWare.CondoWare.CondoWare;
 import javax.swing.JOptionPane;
 
 /**
