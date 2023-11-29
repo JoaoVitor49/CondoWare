@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package condoware.CondoWare;
 
-/**
- *
- * @author joaop
- */
+import javax.swing.JOptionPane;
+
 public class EditLazer extends javax.swing.JFrame {
 
     String tipo = "";
@@ -63,6 +57,11 @@ public class EditLazer extends javax.swing.JFrame {
         rotAluguel.setText("Aluguel:");
 
         btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         rotId.setText("Id:");
 
@@ -161,6 +160,30 @@ public class EditLazer extends javax.swing.JFrame {
         cxId.setEnabled(false);
         mostrarDados();
     }//GEN-LAST:event_formWindowActivated
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        int id = Integer.parseInt(cxId.getText());
+        String tipo = cxTipo.getText();
+        int capacidade = Integer.parseInt(cxCapacidade.getText());
+        Float aluguel = Float.parseFloat(cxAluguel.getText());
+        int res = Conexao.getConexao().editAreaLazer(id, tipo, capacidade, aluguel);
+        if (res == 1) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Área editada com sucesso!",
+                    "Editar área de lazer",
+                    1);
+        } else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao Editar área de laer",
+                    "Editar área de lazer",
+                    0);
+        }
+        receberLazer(cxTipo.getText(), Integer.parseInt(cxCapacidade.getText()), Float.parseFloat(cxAluguel.getText()));
+        Conexao.getConexao().atualizaBancoAreaDeLazer();
+        mostrarDados();
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     public void receberLazer(String tp, int cap, float valor){
         tipo = tp;
