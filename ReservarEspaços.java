@@ -1,12 +1,14 @@
 package condoware.CondoWare;
 
+import java.beans.PropertyChangeEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 public class ReservarEspaços extends javax.swing.JFrame {
 
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    String dat = "";
     /**
      * Creates new form ReservarEspaços
      */
@@ -34,9 +36,9 @@ public class ReservarEspaços extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabAreasDeLazer = new javax.swing.JTable();
         rotData = new javax.swing.JLabel();
-        cxData = new javax.swing.JTextField();
         btVoltar = new javax.swing.JButton();
         btReservar = new javax.swing.JButton();
+        dcData = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reservas de Areas de Lazer");
@@ -83,23 +85,28 @@ public class ReservarEspaços extends javax.swing.JFrame {
             }
         });
 
+        dcData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dcDataPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rotData, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(rotData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cxData, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,14 +115,14 @@ public class ReservarEspaços extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rotData)
-                    .addComponent(cxData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
                     .addComponent(btReservar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -130,7 +137,7 @@ public class ReservarEspaços extends javax.swing.JFrame {
         int id = (int) tabAreasDeLazer.getValueAt(row,0);
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
         try{
-            Date data = formato.parse(cxData.getText());
+            Date data = formato.parse(dat);
             Conexao.getConexao().verificaDataDisp(data, id);
         }
         catch (Exception e) {
@@ -143,6 +150,16 @@ public class ReservarEspaços extends javax.swing.JFrame {
         listarAll();
     }//GEN-LAST:event_formWindowActivated
 
+    private void dcDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dcDataPropertyChange
+        if ("date".equals(evt.getPropertyName())) {
+            // Lógica para lidar com a data selecionada
+            Date dataSelecionada = (Date) evt.getNewValue();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            dat = sdf.format(dataSelecionada);
+            System.out.println("Data Selecionada: " + dat);
+        }
+    }//GEN-LAST:event_dcDataPropertyChange
+    
     public void listarAll() {
         Bancos.getBancos().getBdAreaDeLazer().clear();
         Conexao.getConexao().atualizaBancoAreaDeLazer();
@@ -160,7 +177,7 @@ public class ReservarEspaços extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btReservar;
     private javax.swing.JButton btVoltar;
-    private javax.swing.JTextField cxData;
+    private com.toedter.calendar.JDateChooser dcData;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel rotData;
     private javax.swing.JTable tabAreasDeLazer;
