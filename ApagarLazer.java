@@ -156,6 +156,7 @@ public class ApagarLazer extends javax.swing.JFrame {
                         "Área apagada com sucesso!",
                         "Apagar área de lazer",
                         1);
+            this.dispose();
         }
         else {
             JOptionPane.showMessageDialog(

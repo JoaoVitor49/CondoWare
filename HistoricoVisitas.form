@@ -31,9 +31,9 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="426" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,7 +72,7 @@
                 <Column editable="false" title="Nome" type="java.lang.Object"/>
                 <Column editable="false" title="Apartamento" type="java.lang.Object"/>
                 <Column editable="false" title="Bloco" type="java.lang.Object"/>
-                <Column editable="true" title="Entrada" type="java.lang.Object"/>
+                <Column editable="false" title="Entrada" type="java.lang.Object"/>
                 <Column editable="false" title="Saida" type="java.lang.Object"/>
               </Table>
             </Property>
