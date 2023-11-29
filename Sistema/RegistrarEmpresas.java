@@ -115,7 +115,7 @@ public class RegistrarEmpresas extends javax.swing.JFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
-        int res = Conexao.getConexao().addEmpresasParceiras(cxNome.getText(), cxContato.getText(), cxResponsavel.getText());
+        int res = Conexao.getConexao().addEmpresasParceiras(cxNome.getText(), cxContato.getText(), cxResponsavel.getText(), cxServ.getText());
         if(res == 1) {
             JOptionPane.showMessageDialog(
                         null,

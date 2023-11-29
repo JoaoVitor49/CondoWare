@@ -468,8 +468,9 @@ public class Conexao {
     
     //---------------------------------------------Empresas
         
-    public int addEmpresasParceiras(String nome, String contato, String responsavel) {
-        String sql = "INSERT INTO Emp_Contrat values ('"+nome+"', '"+contato+"', '"+responsavel+"')";
+    public int addEmpresasParceiras(String nome, String contato, String responsavel, String servico) {
+        String sql = "INSERT INTO emp_contrat values ('"+nome+"', "+contato+", '"+responsavel+"', '"+servico+"')";
+        System.out.println(sql);
         try{
             Statement stm = con.createStatement();
             stm.executeUpdate(sql);

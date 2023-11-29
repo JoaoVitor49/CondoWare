@@ -117,9 +117,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="cxSenhaPostgresql">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Jv102030*"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxSenhaPostgresqlActionPerformed"/>
       </Events>
