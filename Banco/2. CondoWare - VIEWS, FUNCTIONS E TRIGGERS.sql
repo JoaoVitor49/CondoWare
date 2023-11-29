@@ -73,6 +73,20 @@ SELECT (SELECT nome FROM PESSOA WHERE condomino = cpf LIMIT 1) AS nome, descrica
 FROM Reg_Problemas NATURAL JOIN Pessoa
 WHERE condomino = cpf;
 
+--FUNÇÃO PARA EXCLUIR HISTÓRICO DE ÁREA ALUGADA QUANDO ESSA FOR EXCLUIDA DO SISTEMA
+CREATE OR REPLACE FUNCTION exc_arealug() RETURNS TRIGGER AS $$
+DECLARE
+	cod INTEGER := OLD.id::INTEGER;
+BEGIN
+	IF EXISTS (SELECT * FROM Areas_Alug WHERE id = cod) THEN
+		DELETE FROM Areas_Alug WHERE id = cod;
+	END IF;
+	RETURN OLD;
+END; $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER exc_arealug BEFORE DELETE ON Area_Lazer
+FOR EACH ROW EXECUTE PROCEDURE exc_arealug();
+
 --RELATÓRIO E INSERIR FUNCIONÁRIO
 CREATE VIEW relatorio_funcionarios(cpf, nome, salario, cargo, placa, email, senha) AS
 SELECT Pessoa.cpf, nome, salario, cargo, (SELECT placa FROM Veiculo WHERE Pessoa.cpf = Veiculo.cpf LIMIT 1) AS placa, email, senha
