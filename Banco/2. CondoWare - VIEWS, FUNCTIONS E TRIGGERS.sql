@@ -171,6 +171,7 @@ CREATE OR REPLACE FUNCTION exc_funcionario(cod BIGINT) RETURNS VOID AS $$
 BEGIN
 	DELETE FROM Funcionario WHERE cpf = cod;
 	DELETE FROM Veiculo WHERE cpf = cod;
+	DELETE FROM Reg_problemas WHERE condomino = cod;
 	IF NOT EXISTS (SELECT * FROM Condomino WHERE cpf = cod) THEN
 		DELETE FROM Pessoa WHERE cpf = cod;
 	END IF;
