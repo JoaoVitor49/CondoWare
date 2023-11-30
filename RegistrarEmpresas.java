@@ -126,6 +126,7 @@ public class RegistrarEmpresas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 

@@ -123,35 +123,53 @@ public class RegistrarProblemas extends javax.swing.JFrame {
 
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
         if(cxBloco.getText().equals("")) {
-            if(Conexao.getConexao().registrarProblemas(CondoWare.getCpf(), txtDesc.getText()) == 1) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Problema enviado com sucesso",
-                        "Problema",
-                        1);
+            if(txtDesc.getText().equals("") == false){
+                if(Conexao.getConexao().registrarProblemas(CondoWare.getCpf(), txtDesc.getText()) == 1) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Problema enviado com sucesso",
+                            "Problema",
+                            1);
+                }
+                else {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Problema não enviado",
+                            "Problema",
+                            0);
+                }
             }
-            else {
+            else{
                 JOptionPane.showMessageDialog(
-                        null,
-                        "Problema não enviado",
-                        "Problema",
-                        0);
+                            null,
+                            "Voce deve escrever algo",
+                            "Atenção",
+                            0);
             }
         }
         else {
-            if(Conexao.getConexao().registrarProblemas(CondoWare.getCpf(), txtDesc.getText(), (cxBloco.getText())) == 1) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Problema enviado com sucesso",
-                        "Problema",
-                        1);
+            if(txtDesc.getText().equals("") == false){
+                if(Conexao.getConexao().registrarProblemas(CondoWare.getCpf(), txtDesc.getText(), (cxBloco.getText())) == 1) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Problema enviado com sucesso",
+                            "Problema",
+                            1);
+                }
+                else {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Problema não enviado",
+                            "Problema",
+                            0);
+                }
             }
-            else {
+            else{
                 JOptionPane.showMessageDialog(
-                        null,
-                        "Problema não enviado",
-                        "Problema",
-                        0);
+                            null,
+                            "Voce deve escrever algo",
+                            "Atenção",
+                            0);
             }
         }
     }//GEN-LAST:event_btEnviarActionPerformed

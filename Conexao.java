@@ -160,7 +160,6 @@ public class Conexao {
         try{
             String sql = "INSERT INTO relatorio_condominos "
                     + "values(" + cpf + ",'" + nome + "'," + bloco + "," + apartamento + "," + placa + ",'" + email + "','" + senha + "')";
-            System.out.println(sql);
             Statement stm = con.createStatement();
             stm.executeUpdate(sql);
         } catch (Exception e) {
@@ -470,7 +469,6 @@ public class Conexao {
         
     public int addEmpresasParceiras(String nome, String contato, String responsavel, String servico) {
         String sql = "INSERT INTO emp_contrat values ('"+nome+"', "+contato+", '"+responsavel+"', '"+servico+"')";
-        System.out.println(sql);
         try{
             Statement stm = con.createStatement();
             stm.executeUpdate(sql);
@@ -626,11 +624,9 @@ public class Conexao {
         atualizaBancoAreasAlugadas();
         for(int i = 0; i < Bancos.getBancos().getBdAreasAlugadas().size(); i++){
             if(Bancos.getBancos().getBdAreasAlugadas().get(i).getDataAlug().equals(data) && Bancos.getBancos().getBdAreasAlugadas().get(i).getId() == id) {
-                System.out.println("ja esta alugado na data " + data);
                 return 0;
             }
         }
-        System.out.println("disponivel nessa data");
         return 1;
     }
     

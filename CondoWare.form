@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="cxEmail">
       <Properties>
-        <Property name="text" type="java.lang.String" value="sindico@gmail.com"/>
+        <Property name="text" type="java.lang.String" value="laura@gmail.com"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="cxSenha">
@@ -117,6 +117,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="cxSenhaPostgresql">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jv102030*"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxSenhaPostgresqlActionPerformed"/>
       </Events>

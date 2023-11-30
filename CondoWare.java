@@ -39,7 +39,7 @@ public class CondoWare extends javax.swing.JFrame {
 
         rotSenha.setText("Senha:");
 
-        cxEmail.setText("sindico@gmail.com");
+        cxEmail.setText("laura@gmail.com");
 
         cxSenha.setText("root");
 
@@ -52,6 +52,7 @@ public class CondoWare extends javax.swing.JFrame {
 
         rotSenhaPostgresql.setText("Senha para PostgreSql:");
 
+        cxSenhaPostgresql.setText("Jv102030*");
         cxSenhaPostgresql.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cxSenhaPostgresqlActionPerformed(evt);
@@ -118,7 +119,6 @@ public class CondoWare extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConectarActionPerformed
-        System.out.println("btconectar");
         senhaPostgreSql = cxSenhaPostgresql.getText();
         Conexao.getConexao();
     }//GEN-LAST:event_btConectarActionPerformed
