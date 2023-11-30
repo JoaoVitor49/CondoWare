@@ -159,7 +159,7 @@ CREATE OR REPLACE FUNCTION exc_condomino(cod BIGINT) RETURNS VOID AS $$
 BEGIN
 	DELETE FROM Condomino WHERE cpf = cod;
 	DELETE FROM Veiculo WHERE cpf = cod;
-	UPDATE Area_Lazer SET locador = NULL WHERE locador = cod;
+	DELETE FROM Areas_Alug WHERE id = cod;
 	IF NOT EXISTS (SELECT * FROM Funcionario WHERE cpf = cod) THEN
 		DELETE FROM Pessoa WHERE cpf = cod;
 	END IF;
