@@ -195,6 +195,7 @@ public class AddFuncionario extends javax.swing.JFrame {
                         "Erro",
                         0);
         }
+        limpar();
         this.dispose();
     }//GEN-LAST:event_btCadastrarActionPerformed
 

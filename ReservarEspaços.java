@@ -3,6 +3,7 @@ package CondoWare2;
 import java.beans.PropertyChangeEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ReservarEspaços extends javax.swing.JFrame {
@@ -129,33 +130,63 @@ public class ReservarEspaços extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
-        this.dispose();
+        this.dispose();       
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservarActionPerformed
-        int row = tabAreasDeLazer.getSelectedRow();
-        int id = (int) tabAreasDeLazer.getValueAt(row,0);
-        int res = 0;
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
-        try{
-            Date data = formato.parse(dat);
-            res = Conexao.getConexao().verificaDataDisp(data, id);
-            if(res == 1){
-                res = Conexao.getConexao().registrarDataAlugada(id, dat, CondoWare.getCpf());
-                if(res == 1) {
-                    System.out.println("alguel registrado");
+        if(tabAreasDeLazer.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione alguma area de lazer na tabela!!",
+                    "Atenção!!",
+                    0);
+        }
+        else{
+            if(dat.equals("") == false){
+                int row = tabAreasDeLazer.getSelectedRow();
+                int id = (int) tabAreasDeLazer.getValueAt(row,0);
+                int res = 0;
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+                try{
+                    Date data = formato.parse(dat);
+                    res = Conexao.getConexao().verificaDataDisp(data, id);
+                    if(res == 1){
+                        res = Conexao.getConexao().registrarDataAlugada(id, dat, CondoWare.getCpf());
+                        if(res == 1) {
+                            JOptionPane.showMessageDialog(
+                                    null,
+                                    "Aluguel Registrado!!",
+                                    "Reserva",
+                                    1);                            
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(
+                                    null,
+                                    "Erro ao alugar!!",
+                                    "Reserva",
+                                    1);                                 
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(
+                                    null,
+                                    "Não foi possivel alugar, essa data já está alugada!!",
+                                    "Reserva",
+                                    1);     
+                    }
+
                 }
-                else {
-                    System.out.println("erro ao alugar");
+                catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
             else{
-                System.out.println("data alugada");
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione alguma data!!",
+                    "Atenção!!",
+                    0);
             }
-            
-        }
-        catch (Exception e) {
-            e.printStackTrace();
         }
         
     }//GEN-LAST:event_btReservarActionPerformed
@@ -170,7 +201,6 @@ public class ReservarEspaços extends javax.swing.JFrame {
             Date dataSelecionada = (Date) evt.getNewValue();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             dat = sdf.format(dataSelecionada);
-            System.out.println("Data Selecionada: " + dat);
         }
     }//GEN-LAST:event_dcDataPropertyChange
     

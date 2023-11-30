@@ -181,6 +181,7 @@ public class RegistrarVisitante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 
@@ -202,7 +203,7 @@ public class RegistrarVisitante extends javax.swing.JFrame {
                         0);                                       
         } 
         listarAll();
-
+        limpar();
     }//GEN-LAST:event_btRegistroEntActionPerformed
 
     private void btRegistroSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistroSaidaActionPerformed
@@ -248,6 +249,12 @@ public class RegistrarVisitante extends javax.swing.JFrame {
                 posLin++;
             }
         }
+    }
+    
+    public void limpar(){
+        cxNome.setText("");
+        cxApartamento.setText("");
+        cxBloco.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
