@@ -160,6 +160,7 @@ BEGIN
 	DELETE FROM Condomino WHERE cpf = cod;
 	DELETE FROM Veiculo WHERE cpf = cod;
 	DELETE FROM Areas_Alug WHERE id = cod;
+	DELETE FROM Reg_problemas WHERE condomino = cod;
 	IF NOT EXISTS (SELECT * FROM Funcionario WHERE cpf = cod) THEN
 		DELETE FROM Pessoa WHERE cpf = cod;
 	END IF;
